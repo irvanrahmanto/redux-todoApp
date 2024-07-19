@@ -44,9 +44,6 @@ export const filterTodo = (filter) => ({
 
 export const markAllCompleted = () => ({
     type: MARK_ALL_COMPLETED,
-    payload: {
-        filter
-    }
 });
 
 export const updateSearchTerm = (searchTerm) => ({

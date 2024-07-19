@@ -1,11 +1,14 @@
-import './App.css'
+import { Provider } from 'react-redux';
+import './App.css';
+import store from './redux/store';
+import Todo from './components/Todo';
 
 function App() {
 
   return (
-    <>
-      <h1 className='text-5xl font-bold'>Hello, Developer!</h1>
-    </>
+    <Provider store={store}>
+      <Todo />
+    </Provider>
   )
 }
 
