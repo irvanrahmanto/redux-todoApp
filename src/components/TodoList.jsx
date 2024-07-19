@@ -3,22 +3,23 @@ import TodoItem from "./TodoItem";
 
 const TodoList = () => {
   const filteredTodos = useSelector((state) => {
-    const todos = state.todos;
-    const filter = state.filter;
-    const searchTerm = state.searchTerm;
+    const todos = state.todos || [];
+    const filter = state.filter || "ALL";
+    const searchTerm = state.searchTerm || "";
+
     return todos.filter((todo) => {
       const matchesFilter =
         (filter === "COMPLETED" && todo.completed) ||
         (filter === "INCOMPLETE" && !todo.completed) ||
         filter === "ALL";
-      const matchesSearch = todo.text.toLowerCase().includes(searchTerm);
+      const matchesSearch = typeof todo.text === "string" && todo.text.toLowerCase().includes(searchTerm.toLowerCase());
 
       return matchesFilter && matchesSearch;
     });
   });
 
   /** print the store */
-//   console.log(">>>>>", filteredTodos);
+  //   console.log(">>>>>", filteredTodos);
 
   return (
     <ul>
